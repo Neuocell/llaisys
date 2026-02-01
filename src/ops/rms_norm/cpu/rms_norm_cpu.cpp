@@ -5,6 +5,7 @@
 #include <algorithm>
 
 // RMSNorm 核心计算模板
+//是原地操作吗？不是
 template <typename T>
 void rms_norm_(T *out, const T *in, const T *weight, size_t rows, size_t cols, float eps) {
     for (size_t i = 0; i < rows; i++) {

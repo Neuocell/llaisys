@@ -12,6 +12,8 @@ from .llaisys_types import llaisysStream_t
 from .tensor import llaisysTensor_t
 from .tensor import load_tensor
 from .ops import load_ops
+# 1. 引入 models 模块
+from .models import load_models, LlaisysQwen2Meta, LlaisysQwen2Weights
 
 
 def load_shared_library():
@@ -38,6 +40,8 @@ LIB_LLAISYS = load_shared_library()
 load_runtime(LIB_LLAISYS)
 load_tensor(LIB_LLAISYS)
 load_ops(LIB_LLAISYS)
+# 2. 调用加载函数，注册模型相关的 C API 签名
+load_models(LIB_LLAISYS)
 
 
 __all__ = [
@@ -52,4 +56,6 @@ __all__ = [
     "llaisysMemcpyKind_t",
     "MemcpyKind",
     "llaisysStream_t",
+    "LlaisysQwen2Meta",   # 导出这些类，方便外部使用
+    "LlaisysQwen2Weights"
 ]
